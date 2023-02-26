@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Assignment_05.Models.PieceworkWorkerModel>
+
+@{
+    ViewData["Title"] = "Index";
+    int totalWorkers = 0;
+    double totalPay = 0.0;
+    double totalMessages = 0.0;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSenior)
+            </th>
+            <th>
+                Pay
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSenior)
+            </td>
+            <td>
+                @item.GetPay().ToString("c")
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+            totalWorkers++;
+            totalPay += item.GetPay();
+            totalMessages += item.Message;
+        }
+
+    </tbody>
+</table>
+<p>
+    Total Worker: @totalWorkers <br/>
+    Total Messages: @totalMessages <br/>
+    Total Pay: @totalPay.ToString("c") <br/>
+</p>

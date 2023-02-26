@@ -1,0 +1,44 @@
+﻿<Window x:Class="PayrollCalculator.Summary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PayrollCalculator"
+        mc:Ignorable="d"
+        Title="Summary" Height="300" Width="450" MinHeight="300" MinWidth="450" Loaded="Window_Loaded" Icon="/summary.jpg" WindowStartupLocation="CenterScreen">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="240" >
+        <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="200"/>
+             <ColumnDefinition Width="200"/>
+                
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+            <!-- Row 0 Controls -->
+            <Label Content="Total Number of Worker :" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=textBoxWorkerName}" TabIndex="1"/>
+            <TextBox x:Name="textBoxTotalWorker" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Center" IsReadOnly="True" TabIndex="2" ToolTip="Total number of workers" />
+
+            <!-- Row 1 Controls -->
+            <Label Content="Total Messages Sent :" HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=textBoxWorkerMessage}" TabIndex="3" />
+            <TextBox x:Name="textBoxTotalMessage" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" TabIndex="4" ToolTip="Total Messages sent by all the workers"/>
+
+
+            <!-- Row 2 Controls -->
+            <Label Content="Total Pay :" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=textBoxWorkerPay}" TabIndex="5"/>
+            <TextBox x:Name="textBoxTotalPay" HorizontalAlignment="Stretch" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" TabIndex="6" ToolTip="Total Pay of the Workers"/>
+
+            <!-- Row 3 Controls -->
+            <Label Content="Average Pay :" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Target="{Binding ElementName=textBoxWorkerPay}" TabIndex="7"/>
+            <TextBox x:Name="textBoxAveragePay" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" IsReadOnly="True" TabIndex="8" ToolTip="Average Pay of the Workers"/>
+
+            <!-- Row 4 Controls -->
+        <Button x:Name="ButtonCloseSummary" Content="C_lose Summary" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" Width="100" Height="30" Click="ButtonCloseSummary_Click" TabIndex="9" ToolTip="Click to close the summary form" IsDefault="True"/>
+    </Grid>
+</Window>
